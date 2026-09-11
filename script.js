@@ -337,15 +337,6 @@ function observePop(selector){
   document.querySelectorAll(selector).forEach((el, i) => {
     el.style.transitionDelay = (i % 6) * 70 + 'ms';
     popObserver.observe(el);
-    // Safety net: if the observer never fires for this element (e.g. it's
-    // already on-screen before the browser finishes its first layout pass),
-    // force it visible after a short delay instead of leaving it hidden forever.
-    setTimeout(() => {
-      if(!el.classList.contains('pop-in')){
-        el.classList.add('pop-in');
-        popObserver.unobserve(el);
-      }
-    }, 1800);
   });
 }
 
@@ -360,15 +351,10 @@ function renderTicker(){
   track.innerHTML = half + half;
 }
 
-function safeRun(fn, label){
-  try { fn(); }
-  catch(err) { console.error('Init step failed:', label, err); }
-}
-
-safeRun(loadCart, 'loadCart');
-safeRun(renderCartCount, 'renderCartCount');
-safeRun(renderTicker, 'renderTicker');
-safeRun(renderKit, 'renderKit');
-safeRun(renderFilters, 'renderFilters');
-safeRun(renderGrid, 'renderGrid');
-safeRun(updateBurn, 'updateBurn');
+loadCart();
+renderCartCount();
+renderTicker();
+renderKit();
+renderFilters();
+renderGrid();
+updateBurn();
