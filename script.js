@@ -337,8 +337,12 @@ function observePop(selector){
   document.querySelectorAll(selector).forEach((el, i) => {
     el.style.transitionDelay = (i % 6) * 70 + 'ms';
     popObserver.observe(el);
-  });
-}
+        setTimeout(() => {
+      if(!el.classList.contains('pop-in')){
+        el.classList.add('pop-in');
+        popObserver.unobserve(el);
+  }
+},1800);
 
 function renderTicker(){
   const track = document.getElementById('tickerTrack');
