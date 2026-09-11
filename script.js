@@ -355,10 +355,15 @@ function renderTicker(){
   track.innerHTML = half + half;
 }
 
-loadCart();
-renderCartCount();
-renderTicker();
-renderKit();
-renderFilters();
-renderGrid();
-updateBurn();
+function safeRun(fn, label){
+  try { fn(); }
+  catch(err) { console.error('Init step failed:', label, err); }
+}
+
+safeRun(loadCart, 'loadCart');
+safeRun(renderCartCount, 'renderCartCount');
+safeRun(renderTicker, 'renderTicker');
+safeRun(renderKit, 'renderKit');
+safeRun(renderFilters, 'renderFilters');
+safeRun(renderGrid, 'renderGrid');
+safeRun(updateBurn, 'updateBurn');
