@@ -246,11 +246,11 @@
   .kit-box.pop-in{opacity:1;transform:translateY(0) scale(1);}
   .icon-wrap{
     width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
-    position:relative;border-radius:4px;background:var(--panel);perspective:600px;
+    position:relative;border-radius:4px;background:var(--panel);
     overflow:hidden;--burn:0;
   }
   .icon-float{width:54%;height:54%;animation:iconFloat 3s ease-in-out infinite;}
-  .icon-tilt{width:100%;height:100%;display:flex;transition:transform .28s cubic-bezier(0.22,0.68,0.32,1);transform-style:preserve-3d;}
+  .icon-tilt{width:100%;height:100%;display:flex;transition:transform .28s cubic-bezier(0.22,0.68,0.32,1);}
   .icon-tilt svg{width:100%;height:100%;}
   @keyframes iconFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
   .stamp-sm{
