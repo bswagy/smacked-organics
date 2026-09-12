@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>smacked organics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="loop-transition show" id="loopTransition" aria-hidden="true">
+  <div class="flame-wash"></div>
+  <div class="flame-layer fl1"></div>
+  <div class="flame-layer fl2"></div>
+  <div class="flame-layer fl3"></div>
+  <div class="flame-layer fl4"></div>
+  <div class="flame-layer fl5"></div>
+</div>
+
+<div class="page-burn-line" aria-hidden="true">
+  <div class="page-burn-char"></div>
+  <div class="page-burn-ember"></div>
+  <div class="page-burn-smoke">
+    <span class="page-puff pp1"></span>
+    <span class="page-puff pp2"></span>
+    <span class="page-puff pp3"></span>
+    <span class="page-puff pp4"></span>
+    <span class="page-puff pp5"></span>
+  </div>
+</div>
+
+<nav>
+  <div class="logo-badge">SMACKED</div>
+  <div class="nav-links mono" id="navLinks">
+    <a href="#shop">shop</a>
+    <a href="#organics">organics</a>
+    <a href="#contact">contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <button class="cart-btn" id="cartToggle" aria-label="Open cart">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="plus-btn" id="plusToggle" aria-label="More links">+</button>
+    <div class="nav-dropdown mono" id="navDropdown">
+      <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="search" aria-label="Search" autocomplete="off">
+        <div class="search-results" id="searchResults"></div>
+      </div>
+      <a href="#privacy">privacy policy</a>
+      <a href="#faq">faq</a>
+      <a href="#returns">returns policy</a>
+      <a href="#terms">terms and conditions</a>
+      <a href="#accessibility">accessibility statement</a>
+    </div>
+  </div>
+</nav>
+
+<div id="homeContent">
+<section class="hero">
+  <div class="ticker">
+    <div class="ticker-track mono" id="tickerTrack"></div>
+  </div>
+  <div class="hero-utility">
+    <button type="button" aria-label="Filter">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+      filter
+    </button>
+    <button type="button" aria-label="Sort">
+      sort: featured
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+  <div class="hero-sub">
+    <p>Organics-first merch, no filler graphics. Heavyweight cotton, one bold mark, made to actually be worn.</p>
+    <a href="#shop" class="cta">shop the drop</a>
+  </div>
+</section>
+
+<section class="brandmark">
+  <div class="brandmark-grid">
+    <div class="brandmark-img" style="background-image:url('logo.jpg')"><div class="smoke-layer"><span class="puff p1"></span><span class="puff p2"></span><span class="puff p3"></span><span class="puff p4"></span></div></div>
+  </div>
+</section>
+
+<section class="kit" id="kit">
+  <div class="kit-head">
+    <h2>the kit</h2>
+    <p>blanks before the drop — tap a dot to try a colorway, hover to feel it move.</p>
+  </div>
+  <div class="kit-grid" id="kitGrid"></div>
+</section>
+
+<section class="shop" id="shop">
+  <div class="shop-head">
+    <h2>the collection</h2>
+    <span class="count mono" id="itemCount">6 pieces</span>
+  </div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="shop" id="organics">
+  <div class="shop-head">
+    <h2>organics</h2>
+    <span class="count mono" id="organicsCount">6 pieces</span>
+  </div>
+  <div class="filters" id="organicsFilters"></div>
+  <div class="grid" id="organicsGrid"></div>
+</section>
+</div>
+
+<section class="contact-section subpage" id="contact">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>contact</h2>
+  </div>
+  <p class="contact-blurb">questions, wholesale inquiries, or just want to say hi — drop us a line.</p>
+  <p class="contact-direct">or email us directly at <a href="mailto:hello@smackedorganics.com">hello@smackedorganics.com</a> — we typically reply within 24-48 hours.</p>
+  <form class="contact-form" id="contactForm">
+    <input type="text" name="name" placeholder="name" required>
+    <input type="email" name="email" placeholder="email" required>
+    <textarea name="message" placeholder="message" rows="5" required></textarea>
+    <button type="submit" class="add-btn">send message</button>
+    <div class="form-note">this is a demo — a real contact form would connect to a service like Formspree or Netlify Forms here.</div>
+  </form>
+</section>
+
+<section class="contact-section subpage" id="faq">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>faq</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">how long does shipping take?</div>
+      <div class="faq-a">orders ship within 2-3 business days. once shipped, standard delivery takes 4-7 business days within the US.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">do you ship internationally?</div>
+      <div class="faq-a">not yet — we currently ship within the US only. international shipping is on the roadmap.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">what's your return policy?</div>
+      <div class="faq-a">unworn items in original condition can be returned within 30 days of delivery. see our returns policy for full details.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">how do i pick the right size?</div>
+      <div class="faq-a">our fits run true to size. if you're between sizes, we recommend sizing up for a relaxed fit.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">is there an age requirement to order from the organics section?</div>
+      <div class="faq-a">yes — you must be 21 or older to purchase items from the organics section. age verification is required at checkout.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">still have questions?</div>
+      <div class="faq-a">reach out through our <a href="#contact">contact page</a> and we'll get back to you.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section subpage" id="returns">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>returns policy</h2>
+  </div>
+  <div class="policy-text">
+    <p>we want you to love what you ordered. if something's not right, here's how returns work.</p>
+    <h3>return window</h3>
+    <p>items can be returned within 30 days of the delivery date. after 30 days, we're unable to offer a refund or exchange.</p>
+    <h3>condition</h3>
+    <p>returned items must be unworn, unwashed, and in their original condition with tags attached. items showing signs of wear will not be accepted.</p>
+    <h3>organics items</h3>
+    <p>due to the nature of these products, items in the organics section are final sale and cannot be returned or exchanged.</p>
+    <h3>how to start a return</h3>
+    <p>reach out through our <a href="#contact">contact page</a> with your order number, and we'll send return instructions.</p>
+    <h3>refunds</h3>
+    <p>once your return is received and inspected, we'll process your refund to the original payment method within 5-7 business days.</p>
+  </div>
+</section>
+
+<section class="contact-section subpage" id="terms">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>terms and conditions</h2>
+  </div>
+  <div class="policy-text">
+    <p>by using this site and placing an order, you agree to the following terms.</p>
+    <h3>age requirement</h3>
+    <p>you must be 18 or older to make a purchase on this site. items in the organics section require you to be 21 or older, and age verification is required at checkout.</p>
+    <h3>orders and pricing</h3>
+    <p>all prices are listed in USD and are subject to change without notice. we reserve the right to refuse or cancel any order at our discretion, including in cases of suspected fraud or error in pricing.</p>
+    <h3>product availability</h3>
+    <p>items are available while supplies last. we do not guarantee that any product will remain in stock.</p>
+    <h3>acceptable use</h3>
+    <p>you agree not to use this site for any unlawful purpose or in any way that could damage, disable, or impair the site.</p>
+    <h3>limitation of liability</h3>
+    <p>smacked organics is not liable for any indirect, incidental, or consequential damages arising from your use of this site or products purchased through it.</p>
+    <h3>changes to these terms</h3>
+    <p>we may update these terms from time to time. continued use of the site after changes are posted constitutes acceptance of the updated terms.</p>
+  </div>
+</section>
+
+<section class="contact-section subpage" id="accessibility">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>accessibility statement</h2>
+  </div>
+  <div class="policy-text">
+    <p>smacked organics is committed to making our site accessible to everyone, including people with disabilities.</p>
+    <h3>our approach</h3>
+    <p>we aim to meet or exceed the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards, and we're continually working to improve the usability and accessibility of this site.</p>
+    <h3>feedback</h3>
+    <p>if you encounter any barriers while using this site, please let us know through our <a href="#contact">contact page</a>. we take accessibility feedback seriously and will do our best to address issues promptly.</p>
+    <h3>ongoing work</h3>
+    <p>accessibility is an ongoing effort. we regularly review our site to identify and fix issues as they're found.</p>
+  </div>
+</section>
+
+<section class="contact-section subpage" id="privacy">
+  <a href="#" class="back-link" data-back>&larr; back to shop</a>
+  <div class="shop-head">
+    <h2>privacy policy</h2>
+  </div>
+  <div class="policy-text">
+    <p>this policy explains what information we collect and how we use it.</p>
+    <h3>information we collect</h3>
+    <p>when you place an order, we collect your name, shipping address, email, and payment information. when you use our contact form, we collect your name, email, and message.</p>
+    <h3>how we use it</h3>
+    <p>we use your information to process orders, communicate with you about your purchase, and respond to inquiries. we do not sell your personal information to third parties.</p>
+    <h3>payment processing</h3>
+    <p>payments are processed through a third-party payment processor. we do not store your full card details on our servers.</p>
+    <h3>cookies</h3>
+    <p>this site may use cookies to remember items in your cart and improve your browsing experience.</p>
+    <h3>your rights</h3>
+    <p>you can request access to, correction of, or deletion of your personal information at any time through our <a href="#contact">contact page</a>.</p>
+    <h3>changes to this policy</h3>
+    <p>we may update this policy from time to time. any changes will be posted on this page.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="mono">smacked organics</span>
+  <div class="social-links">
+    <a href="#" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <defs>
+          <linearGradient id="igGradient" x1="0" y1="24" x2="24" y2="0">
+            <stop offset="0%" stop-color="#FEDA75"/>
+            <stop offset="30%" stop-color="#FA7E1E"/>
+            <stop offset="55%" stop-color="#D62976"/>
+            <stop offset="80%" stop-color="#962FBF"/>
+            <stop offset="100%" stop-color="#4F5BD5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#igGradient)"/>
+        <circle cx="12" cy="12" r="4" stroke="url(#igGradient)"/>
+        <circle cx="17.5" cy="6.5" r="1.1" fill="url(#igGradient)" stroke="none"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" width="18" height="18">
+        <path fill="#25F4EE" transform="translate(-0.6,-0.6)" d="M16 3c.7 2.4 2.4 4 5 4.3v3c-1.8 0-3.4-.6-4.7-1.6v6.8c0 3.6-2.9 6.5-6.5 6.5S3.3 19.1 3.3 15.5 6.2 9 9.8 9c.5 0 1 .1 1.5.2v3.2c-.5-.2-1-.3-1.5-.3-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h3z"/>
+        <path fill="#FE2C55" transform="translate(0.6,0.6)" d="M16 3c.7 2.4 2.4 4 5 4.3v3c-1.8 0-3.4-.6-4.7-1.6v6.8c0 3.6-2.9 6.5-6.5 6.5S3.3 19.1 3.3 15.5 6.2 9 9.8 9c.5 0 1 .1 1.5.2v3.2c-.5-.2-1-.3-1.5-.3-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h3z"/>
+        <path fill="#FFFFFF" d="M16 3c.7 2.4 2.4 4 5 4.3v3c-1.8 0-3.4-.6-4.7-1.6v6.8c0 3.6-2.9 6.5-6.5 6.5S3.3 19.1 3.3 15.5 6.2 9 9.8 9c.5 0 1 .1 1.5.2v3.2c-.5-.2-1-.3-1.5-.3-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3V3h3z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="X (Twitter)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#FFFFFF">
+        <path d="M18.9 3H22l-7.4 8.4L23 21h-6.6l-5.2-6.8L5.2 21H2l7.9-9L2 3h6.8l4.7 6.2L18.9 3z"/>
+      </svg>
+    </a>
+  </div>
+  <span class="mono">Are you smacked yet?</span>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="drawer-head">
+      <h3>your bag</h3>
+      <button class="close-x" style="position:static" id="closeCart">&times;</button>
+    </div>
+    <div class="drawer-items" id="drawerItems"></div>
+    <div class="drawer-foot" id="drawerFoot"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
