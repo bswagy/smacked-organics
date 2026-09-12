@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>smacked organics — admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root{
+    --void:#0B0710; --panel:#1E1728; --line:#2E2438;
+    --bone:#F3EFEA; --stone:#9C93A8; --pink:#E3242C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    background:var(--void);color:var(--bone);font-family:'Archivo',sans-serif;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .card{
+    background:var(--panel);border:1px solid var(--line);padding:40px;
+    width:100%;max-width:400px;
+  }
+  h1{font-family:'Archivo Black',sans-serif;font-size:22px;margin-bottom:6px;text-transform:lowercase;}
+  .sub{font-size:13px;color:var(--stone);margin-bottom:28px;}
+  label{display:block;font-size:12px;color:var(--stone);margin-bottom:6px;text-transform:lowercase;}
+  input{
+    width:100%;background:var(--void);border:1px solid var(--line);color:var(--bone);
+    font-family:'IBM Plex Mono',monospace;font-size:13px;padding:12px;margin-bottom:16px;
+  }
+  input:focus{outline:none;border-color:var(--pink);}
+  button{
+    width:100%;background:var(--pink);color:#FFFFFF;border:none;padding:14px;
+    font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;
+    cursor:pointer;transition:opacity .15s;
+  }
+  button:hover{opacity:0.85;}
+  .error{color:var(--pink);font-size:12px;margin-top:12px;display:none;}
+  .error.show{display:block;}
+  #dashboard{display:none;width:100%;max-width:800px;}
+  .dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  .logout-btn{width:auto;padding:8px 16px;font-size:11px;background:none;border:1px solid var(--line);color:var(--stone);}
+  .logout-btn:hover{border-color:var(--pink);color:var(--pink);opacity:1;}
+  table{width:100%;border-collapse:collapse;}
+  th, td{padding:12px;text-align:left;border-bottom:1px solid var(--line);font-size:13px;}
+  th{color:var(--stone);text-transform:uppercase;font-size:11px;letter-spacing:0.5px;}
+  td input{margin-bottom:0;width:80px;padding:8px;}
+  .save-btn{width:auto;padding:8px 14px;font-size:11px;}
+  .status{font-size:12px;color:var(--stone);margin-top:16px;}
+</style>
+</head>
+<body>
+
+<div class="card" id="loginCard">
+  <h1>smacked organics</h1>
+  <div class="sub mono">admin login</div>
+  <label for="email">email</label>
+  <input type="email" id="email" placeholder="you@example.com">
+  <label for="password">password</label>
+  <input type="password" id="password" placeholder="••••••••">
+  <button id="loginBtn">log in</button>
+  <div class="error mono" id="loginError">invalid email or password.</div>
+</div>
+
+<div id="dashboard">
+  <div class="dash-head">
+    <h1>inventory</h1>
+    <button class="logout-btn mono" id="logoutBtn">log out</button>
+  </div>
+  <table>
+    <thead>
+      <tr><th>product id</th><th>size</th><th>color</th><th>stock</th><th></th></tr>
+    </thead>
+    <tbody id="inventoryRows"></tbody>
+  </table>
+  <div class="status mono" id="dashStatus"></div>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://fexsevhuufbohcewebzw.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZleHNldmh1dWZib2hjZXdlYnp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMzk2NDksImV4cCI6MjEwNDgxNTY0OX0.lXVR2zQyNTRONyuEZaJP4GGpMcY3-gahhZvBpLEGEd4';
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const loginCard = document.getElementById('loginCard');
+  const dashboard = document.getElementById('dashboard');
+  const loginError = document.getElementById('loginError');
+
+  async function checkSession(){
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if(session){
+      showDashboard();
+    }
+  }
+
+  document.getElementById('loginBtn').addEventListener('click', async () => {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    loginError.classList.remove('show');
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if(error){
+      loginError.textContent = error.message;
+      loginError.classList.add('show');
+      return;
+    }
+    showDashboard();
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut();
+    dashboard.style.display = 'none';
+    loginCard.style.display = 'block';
+  });
+
+  async function showDashboard(){
+    loginCard.style.display = 'none';
+    dashboard.style.display = 'block';
+    await loadInventory();
+  }
+
+  async function loadInventory(){
+    const statusEl = document.getElementById('dashStatus');
+    statusEl.textContent = 'loading...';
+    const { data, error } = await supabaseClient.from('inventory').select('*').order('product_id');
+    if(error){
+      statusEl.textContent = 'error loading inventory: ' + error.message;
+      return;
+    }
+    statusEl.textContent = '';
+    const rowsEl = document.getElementById('inventoryRows');
+    rowsEl.innerHTML = data.map(row => `
+      <tr data-row-id="${row.id}">
+        <td>${row.product_id}</td>
+        <td>${row.size}</td>
+        <td>${row.color}</td>
+        <td><input type="number" class="stock-input" value="${row.stock_count}"></td>
+        <td><button class="save-btn mono" data-row-id="${row.id}">save</button></td>
+      </tr>
+    `).join('');
+    rowsEl.querySelectorAll('.save-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const rowId = btn.dataset.rowId;
+        const input = btn.closest('tr').querySelector('.stock-input');
+        const newCount = Number(input.value);
+        const statusEl = document.getElementById('dashStatus');
+        statusEl.textContent = 'saving...';
+        const { error } = await supabaseClient.from('inventory').update({ stock_count: newCount }).eq('id', rowId);
+        statusEl.textContent = error ? 'error saving: ' + error.message : 'saved.';
+      });
+    });
+  }
+
+  checkSession();
+</script>
+
+</body>
+</html>
