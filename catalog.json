@@ -1,0 +1,133 @@
+{
+ "7": {
+  "name": "smacked sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "8": {
+  "name": "oversized logo hoodie",
+  "price": 92,
+  "restricted": false
+ },
+ "9": {
+  "name": "Vintage wash + small logo",
+  "price": 68,
+  "restricted": false
+ },
+ "10": {
+  "name": "smacked zip hoodie",
+  "price": 98,
+  "restricted": false
+ },
+ "11": {
+  "name": "vertical logo sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "12": {
+  "name": "smacked dragon tee",
+  "price": 38,
+  "restricted": false
+ },
+ "13": {
+  "name": "smacked dragon sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "14": {
+  "name": "smacked organics trucker hat",
+  "price": 32,
+  "restricted": false
+ },
+ "15": {
+  "name": "smacked star tee",
+  "price": 38,
+  "restricted": false
+ },
+ "16": {
+  "name": "smacked collegiate tee",
+  "price": 38,
+  "restricted": false
+ },
+ "17": {
+  "name": "smacked bodega tee",
+  "price": 38,
+  "restricted": false
+ },
+ "18": {
+  "name": "smacked star sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "19": {
+  "name": "are you smacked sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "20": {
+  "name": "are you smacked hoodie",
+  "price": 92,
+  "restricted": false
+ },
+ "21": {
+  "name": "hoodie",
+  "price": 88,
+  "restricted": false
+ },
+ "22": {
+  "name": "beanie",
+  "price": 28,
+  "restricted": false
+ },
+ "23": {
+  "name": "smacked block beanie",
+  "price": 28,
+  "restricted": false
+ },
+ "24": {
+  "name": "smacked gold tee",
+  "price": 38,
+  "restricted": false
+ },
+ "101": {
+  "name": "rolling papers",
+  "price": 8,
+  "restricted": true
+ },
+ "102": {
+  "name": "grinder",
+  "price": 24,
+  "restricted": true
+ },
+ "103": {
+  "name": "rolling tray",
+  "price": 32,
+  "restricted": true
+ },
+ "104": {
+  "name": "stash jar",
+  "price": 18,
+  "sizePrices": {
+   "1/8 oz": 40
+  },
+  "restricted": true
+ },
+ "105": {
+  "name": "torch lighter",
+  "price": 14,
+  "restricted": true
+ },
+ "106": {
+  "name": "ashtray",
+  "price": 16,
+  "restricted": true
+ },
+ "107": {
+  "name": "mylar bags",
+  "price": 12,
+  "sizePrices": {
+   "1/8 oz": 40
+  },
+  "restricted": true
+ }
+}
