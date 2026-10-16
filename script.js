@@ -699,23 +699,6 @@ safeRun(() => {
     window.history.replaceState({}, '', window.location.pathname);
   }
 }, 'checkoutRedirect');
-safeRun(() => {
-  const overlay = document.getElementById('ageGateOverlay');
-  const AGE_GATE_KEY = 'smacked_age_verified';
-
-  if(!localStorage.getItem(AGE_GATE_KEY)){
-    overlay.classList.add('show');
-  }
-
-  document.getElementById('ageGateYes').addEventListener('click', () => {
-    localStorage.setItem(AGE_GATE_KEY, 'true');
-    overlay.classList.remove('show');
-  });
-
-  document.getElementById('ageGateNo').addEventListener('click', () => {
-    window.location.href = 'https://www.google.com';
-  });
-}, 'ageGate');
 
 safeRun(renderTicker, 'renderTicker');
 (async () => {
