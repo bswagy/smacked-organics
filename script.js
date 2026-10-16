@@ -302,7 +302,6 @@ function openModal(id){
     <div class="modal-info">
       <h3>${p.name}</h3>
       ${p.description ? `<p class="modal-description">${p.description}</p>` : ''}
-      ${organicsItem ? `<p class="product-disclaimer mono">you must be 18+ to purchase.</p>` : ''}
       <div class="price mono" id="modalPrice">${money(priceFor(itemSizes[0]))}</div>
       ${p.colors.length > 1 ? `
         <div class="label-row">
