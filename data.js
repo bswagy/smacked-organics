@@ -36,7 +36,7 @@ const ORGANICS_MYLAR = `<svg viewBox="0 0 100 100"><path d="M22 20 L30 8 L70 8 L
 // NOTE: glass jar + mylar bags currently offer only the small size (the only one with a real price).
 // To add medium / large later, add them to `sizes` AND give each a price in `sizePrices`
 // (and in catalog.json, which checkout uses to verify prices).
-const ORGANICS = [
+const ORGANICS_HIDDEN = [
   // isLimited: true no longer drives a separate carousel — these items now
   // just sort first in this array so they naturally lead the organics grid.
   // images / video work the same way as PRODUCTS above — add real photo paths
@@ -49,4 +49,7 @@ const ORGANICS = [
   {id:104, name:'glass jar', price:18, colors:['#F3EFEA','#6B3FA0','#241B30','#FF2D78'], svg:ORGANICS_JAR, cat:'accessories', emptyContainer:true, images:[], video:'', sizes:['small'], sizePrices:{'small':40}, description:'empty glass jar with a lid. sold empty, no contents included.'},
   {id:107, name:'mylar bags', price:12, colors:['#241B30','#F3EFEA','#6B3FA0','#FF2D78'], svg:ORGANICS_MYLAR, cat:'accessories', emptyContainer:true, images:[], video:'', sizes:['small'], sizePrices:{'small':40}, description:'empty resealable mylar bags with a zip seal. sold empty, no contents included.'},
 ];
+// Organics items are hidden for now. To bring them back, change ORGANICS below to ORGANICS_HIDDEN
+// and remove the `hidden` attribute from the #organics section in index.html.
+const ORGANICS = [];
 const ORGANICS_CATS = ['all', 'accessories'];
