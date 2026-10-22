@@ -1000,3 +1000,35 @@ safeRun(() => {
   document.getElementById('cookieModalClose').addEventListener('click', closeSettings);
   modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) closeSettings(); });
 }, 'cookieConsent');
+
+safeRun(() => {
+  const root = document.getElementById('dropCarousel');
+  if(!root) return;
+  const track = root.querySelector('.car-track');
+  const slides = [...root.querySelectorAll('.car-slide')];
+  const dotsEl = root.querySelector('.car-dots');
+  let i = 0;
+  const dots = slides.map((_, n) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', `Photo ${n + 1} of ${slides.length}`);
+    b.addEventListener('click', () => go(n));
+    dotsEl.appendChild(b); return b;
+  });
+  function go(n){
+    i = (n + slides.length) % slides.length;
+    track.style.transform = `translateX(-${i * 100}%)`;
+    dots.forEach((d, k) => d.setAttribute('aria-selected', String(k === i)));
+  }
+  root.querySelector('.car-prev').addEventListener('click', () => go(i - 1));
+  root.querySelector('.car-next').addEventListener('click', () => go(i + 1));
+  let startX = null;
+  root.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+  root.addEventListener('touchend', e => {
+    if(startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if(Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+    startX = null;
+  });
+  if(slides.length < 2){ root.querySelectorAll('.car-arrow, .car-dots').forEach(el => el.hidden = true); }
+  go(0);
+}, 'dropCarousel');
