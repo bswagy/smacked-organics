@@ -114,5 +114,10 @@
    "small": 40
   },
   "restricted": true
+ },
+ "26": {
+  "name": "smacked 05 tee",
+  "price": 38,
+  "restricted": false
  }
 }
