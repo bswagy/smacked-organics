@@ -708,3 +708,5 @@
   .drop-btn{font-family:'Archivo Black',sans-serif;font-size:18px;letter-spacing:0.5px;line-height:1;padding:0.35em 0.6em;text-transform:none;background:var(--pink);color:#fff;margin-top:6px;transition:background .15s,color .15s;}
   .drop-btn:hover{background:#fff;color:var(--pink);filter:none;}
   @media (max-width:760px){ .drop-btn{font-size:16px;} }
+
+  .cart-count[hidden]{display:none !important;}

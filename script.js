@@ -429,7 +429,9 @@ function bumpCartIcon(){
 
 function renderCartCount(){
   const count = cart.reduce((sum,i) => sum + i.qty, 0);
-  document.getElementById('cartCount').textContent = count;
+  const el = document.getElementById('cartCount');
+  el.textContent = count;
+  el.hidden = count === 0;
 }
 
 // Free shipping threshold — edit this one number anytime to change the requirement.
