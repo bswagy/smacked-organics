@@ -119,5 +119,10 @@
   "name": "smacked 05 tee",
   "price": 38,
   "restricted": false
+ },
+ "27": {
+  "name": "smacked 05 hoodie",
+  "price": 92,
+  "restricted": false
  }
 }
