@@ -63,7 +63,7 @@ function attachTilt(boxEl){
   });
 }
 
-let productColors = {7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:0, 20:0, 21:0, 22:0, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0};
+let productColors = {7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:0, 20:0, 21:0, 22:0, 23:0, 24:0, 25:0, 26:0, 27:0, 28:0, 29:0, 30:0};
 let organicsColors = {101:0, 102:0, 103:0, 104:0, 105:0, 106:0, 107:0};
 const SIZES = ['S','M','L','XL'];
 
@@ -74,7 +74,7 @@ const SIZE_CHART = {
   L:  { chest: 44, length: 29, sleeve: 35 },
   XL: { chest: 48, length: 30, sleeve: 36 },
 };
-const CATS = ['all', 'tees', 'hoodies', 'bottoms', 'hats', 'beanies'];
+const CATS = ['all', 'tees', 'hoodies', 'outerwear', 'bottoms', 'hats', 'beanies'];
 
 let cart = [];
 

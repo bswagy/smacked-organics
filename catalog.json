@@ -129,5 +129,15 @@
   "name": "smacked organics diamond tee",
   "price": 38,
   "restricted": false
+ },
+ "29": {
+  "name": "smacked star track jacket",
+  "price": 110,
+  "restricted": false
+ },
+ "30": {
+  "name": "smacked star track pants",
+  "price": 80,
+  "restricted": false
  }
 }
