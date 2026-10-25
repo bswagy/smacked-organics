@@ -1034,3 +1034,17 @@ safeRun(() => {
   if(slides.length < 2){ root.querySelectorAll('.car-arrow, .car-dots').forEach(el => el.hidden = true); }
   go(0);
 }, 'dropCarousel');
+
+// "shop the drop" opens the star tracksuit jacket
+safeRun(() => {
+  const btn = document.querySelector('.drop-btn[data-product]');
+  if(!btn) return;
+  btn.addEventListener('click', (e) => {
+    const id = Number(btn.dataset.product);
+    if(!PRODUCTS.some(p => p.id === id)) return; // fall back to scrolling to the shop
+    e.preventDefault();
+    const card = document.querySelector(`.card[data-id="${id}"]`);
+    if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(() => openModal(id), card ? 450 : 0);
+  });
+}, 'dropButton');
