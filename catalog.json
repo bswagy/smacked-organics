@@ -139,5 +139,20 @@
   "name": "smacked star track pants",
   "price": 80,
   "restricted": false
+ },
+ "31": {
+  "name": "smacked 28 zip hoodie",
+  "price": 98,
+  "restricted": false
+ },
+ "32": {
+  "name": "smacked 28 sweatpants",
+  "price": 68,
+  "restricted": false
+ },
+ "33": {
+  "name": "smacked 28 tee",
+  "price": 38,
+  "restricted": false
  }
 }
